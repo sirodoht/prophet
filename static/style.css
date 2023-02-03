@@ -1,0 +1,478 @@
+/* reset */
+html {
+    /* fix line height in all browsers */
+    line-height: 1.15;
+    /* prevent adjustments of font size after orientation changes in iOS */
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    /* remove margin in all browsers */
+    margin: 0;
+}
+
+hr {
+    /* fix height in Firefox */
+    height: 0;
+    /* fix inheritance of border color in Firefox */
+    color: inherit;
+}
+
+abbr[title] {
+    /* fix text decoration in Chrome, Edge, Safari. */
+    text-decoration: underline dotted;
+}
+
+b,
+strong {
+    /* fix font weight in Edge and Safari */
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    /* improve consistency of default fonts in all browsers */
+    font-family: monospace;
+    /* correct the odd 'em' font sizing in all browsers */
+    font-size: 1em;
+}
+
+small {
+    /* fix font size in all browsers */
+    font-size: 80%;
+}
+
+/* prevent sub and sup from affecting the line height in all browsers */
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    /* remove text indentation from table contents in Chrome and Safari */
+    text-indent: 0;
+    /* fix table border color inheritance in Chrome and Safari */
+    border-color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    /* fix font styles in all browsers */
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    /* remove margin in Firefox and Safari */
+    margin: 0;
+}
+
+button,
+select {
+    /* remove inheritance of text transform in Edge and Firefox */
+    text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    /* fix inability to style clickable types in iOS and Safari */
+    -webkit-appearance: button;
+}
+
+/* remove inner border and padding in Firefox */
+::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+:-moz-focusring {
+    /* restore focus styles unset by the previous rule */
+    outline: 1px dotted ButtonText;
+}
+
+:-moz-ui-invalid {
+    /* remove additional ':invalid' styles in Firefox */
+    box-shadow: none;
+}
+
+progress {
+    /* fix vertical alignment in Chrome and Firefox */
+    vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    /* fix cursor style of increment and decrement buttons in Safari */
+    height: auto;
+}
+
+[type='search'] {
+    /* fix appearance in Chrome and Safari */
+    -webkit-appearance: textfield;
+    /* fix outline in Safari */
+    outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+    /* remove inner padding in Chrome and Safari on macOS */
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    /* fix inability to style clickable types in iOS and Safari */
+    -webkit-appearance: button;
+    /* change font properties to 'inherit' in Safari. */
+    font: inherit;
+}
+
+summary {
+    /* fix display in Chrome and Safari */
+    display: list-item;
+}
+
+/* variables */
+:root {
+    --link-color: #1175e2;
+    --ascent-color: #006cdf;
+    --dark-grey-color: #757575;
+    --light-grey-color: #eff1f5;
+    --airy-grey-color: #fafafa;
+    --green-color: #26bd60;
+    --red-color: #ff0000;
+    --purple-color: #cd1ecd;
+}
+
+/* dark mode
+ * create a new color (dark-mode-color)
+ * override existing colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark-mode-color: #212529;
+
+        --link-color: #3395ff;
+        --dark-grey-color: #78828a;
+        --light-grey-color: #353535;
+        --airy-grey-color: #2b2b2b;
+        --purple-color: #dd47ec;
+    }
+}
+
+/* general */
+html,
+body {
+    font-size: 18px;
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+@media (max-width: 34rem) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #fff;
+        background: var(--dark-mode-color);
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.btn {
+    display: inline-block;
+    cursor: pointer;
+    background: var(--link-color);
+    color: #fff;
+    border: 1px solid var(--ascent-color);
+    padding: 8px 24px;
+}
+
+a.btn:hover,
+a.btn:active {
+    background: var(--ascent-color);
+    text-decoration: none;
+}
+
+a.btn:disabled {
+    pointer-events: none;
+    background: var(--ascent-color);
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-grey-color);
+    margin: 16px 0;
+}
+
+h2,
+h3 {
+    font-weight: 500;
+    margin: 16px 0;
+}
+
+img {
+    width: 100%;
+}
+
+main {
+    max-width: 34rem;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+@media print {
+    main {
+        max-width: unset;
+    }
+}
+
+@media print {
+    article {
+        page-break-before: always;
+    }
+}
+
+aside {
+    max-width: 34rem;
+    border: 1px dashed #000;
+    padding: 2px 6px;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+@media (max-width: 34rem) {
+    aside {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+}
+
+section {
+    max-width: 34rem;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+nav {
+    max-width: 34rem;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+@media print {
+    nav {
+        display: none;
+    }
+}
+
+ol,
+ul {
+    padding-left: 24px;
+}
+
+blockquote {
+    border-left: 4px solid var(--light-grey-color);
+    padding-left: 16px;
+    margin-left: 0;
+    color: var(--dark-grey-color);
+}
+
+figure {
+    border: 1px var(--light-grey-color) solid;
+    margin: auto;
+    color: var(--dark-grey-color);
+}
+
+figcaption {
+    font-size: 12px;
+    text-align: center;
+}
+
+dt {
+    font-weight: 700;
+}
+
+dd {
+    margin-left: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid var(--light-grey-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+thead:nth-child(odd),
+tr:nth-child(even) {
+    background: var(--light-grey-color);
+}
+
+th,
+td {
+    max-width: 0px;
+    padding: 4px;
+}
+
+pre {
+    background: var(--airy-grey-color);
+    overflow-x: scroll;
+}
+
+code {
+    background: var(--airy-grey-color);
+    padding: 2px;
+}
+
+hr {
+    border-top: 1px solid var(--light-grey-color);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+footer {
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: var(--dark-grey-color);
+}
+
+.footer-comment {
+    margin-bottom: 8px;
+}
+
+.help {
+    cursor: help;
+    text-decoration: dotted underline;
+}
+
+/* mods
+ * they override specific classes with specific styles */
+.type-approve {
+    color: var(--green-color) !important;
+}
+
+.type-delete {
+    color: var(--red-color) !important;
+}
+
+.type-danger {
+    background: var(--red-color) !important;
+    border-color: var(--red-color) !important;
+}
+
+/* form */
+label {
+    display: block;
+    margin-top: 16px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="email"],
+input[type="password"],
+textarea {
+    display: block;
+    border: 2px solid var(--light-grey-color);
+    box-sizing: border-box;
+    width: 34rem;
+}
+@media (max-width: 34rem) {
+    input[type="text"],
+    input[type="url"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        width: 100%;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    input[type="text"],
+    input[type="url"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        color: #fff;
+        background: var(--light-grey-color);
+    }
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background: var(--link-color);
+    color: #fff;
+    border: 1px solid var(--ascent-color);
+    padding: 8px 24px;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:active {
+    background: var(--ascent-color);
+}
+
+input[type="submit"]:disabled {
+    pointer-events: none;
+    background: var(--ascent-color);
+}
+
+form .helptext {
+    color: var(--dark-grey-color);
+}
+
+.form-error {
+    color: var(--red-color);
+}
+
+.form-inline {
+    display: inline-block;
+}
+
+.form-inline input[type="submit"] {
+    border: none;
+    background: unset;
+    color: var(--link-color);
+    padding: 0;
+}
+
+.form-inline input[type="submit"]:hover {
+    text-decoration: underline;
+}
