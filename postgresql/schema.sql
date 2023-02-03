@@ -1,6 +1,7 @@
 CREATE TABLE posts (
     id serial PRIMARY KEY,
     created_at TIMESTAMP NOT NULL,
-    title VARCHAR(300) NOT NULL,
-    body TEXT
+    npub VARCHAR(100) NOT NULL,
+    relaylist TEXT NOT NULL,
+    body TEXT NOT NULL
 );

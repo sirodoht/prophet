@@ -23,11 +23,13 @@ func (s *SQLStore) InsertPost(
 	var id int64
 	rows, err := s.db.NamedQuery(`
 		INSERT INTO posts (
-			title,
+			npub,
+			relaylist,
 			body,
 			created_at
 		) VALUES (
-			:title,
+			:npub,
+			:relaylist,
 			:body,
 			:created_at
 		) RETURNING id`, d)
@@ -43,12 +45,16 @@ func (s *SQLStore) InsertPost(
 	return id, nil
 }
 
-func (s *SQLStore) GetAllPost(ctx context.Context) ([]*Post, error) {
+func (s *SQLStore) GetAllPostByNpub(
+	ctx context.Context,
+	npub string,
+) ([]*Post, error) {
 	var posts []*Post
 	err := s.db.SelectContext(
 		ctx,
 		&posts,
-		`SELECT * FROM posts ORDER BY title ASC`,
+		`SELECT * FROM posts WHERE npub=$1 ORDER BY created_at DESC`,
+		npub,
 	)
 	if err != nil {
 		return nil, err

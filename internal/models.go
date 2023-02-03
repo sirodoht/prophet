@@ -4,7 +4,8 @@ import "time"
 
 type Post struct {
 	ID        int64     `db:"id"`
-	Title     string    `db:"title"`
+	Npub      string    `db:"npub"`
 	Body      string    `db:"body"`
+	RelayList string    `db:"relaylist"`
 	CreatedAt time.Time `db:"created_at"`
 }
