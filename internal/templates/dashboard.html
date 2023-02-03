@@ -1,8 +1,20 @@
 {{define "page"}}
 <main>
     <h1>dashboard</h1>
+
+    {{if .SessionNpub}}
+    <div class="dashboard-npub">
+        {{.SessionNpub}}
+    </div>
+    {{end}}
+
     <ul>
-        <li><a href="/">all posts</a></li>
+        <li><a href="/">home – all posts</a></li>
+        <li><a href="/new/post">new post</a></li>
+        <li><a href="/about">about</a></li>
+        {{if .SessionNpub}}
+        <li><a href="/logout">logout</a></li>
+        {{end}}
     </ul>
 </main>
 {{end}}

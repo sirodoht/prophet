@@ -3,13 +3,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>prophet</title>
+        <title>128k.blog — long-form nostr</title>
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
         <nav>
+
             <a href="/">home</a>
-            | <a href="/new/post">new post</a>
+            {{if .SessionNpub}}
+            <a href="/new/post">new post</a>
+            <a href="/dashboard">dashboard</a>
+            <div class="nav-npub">
+                {{.SessionNpub}}
+            </div>
+            {{else}}
+            <a href="/about">about</a>
+            {{end}}
+
         </nav>
         {{template "page" .}}
     </body>
