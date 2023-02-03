@@ -1,0 +1,12 @@
+{{define "page"}}
+<main>
+    <h1>all posts</h1>
+    <ul>
+        {{range .PostList}}
+        <li>
+            <a href="/posts/{{.ID}}">{{.Title}}</a>
+        </li>
+        {{end}}
+    </ul>
+</main>
+{{end}}
