@@ -25,6 +25,14 @@ cd ..
 make serve
 ```
 
+## Tools
+
+There is key encoding tool in the codebase:
+
+```sh
+go run cmd/encodekey/main.go put-hex-secret-key-here
+```
+
 ## License
 
 MIT
