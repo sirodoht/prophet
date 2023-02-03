@@ -1,9 +1,11 @@
 # prophet
 
-A Prophet stood alone with sight so clear,
-Of things to come, a premonition dear.
-With visions bold, he spoke of what was near,
-Of troubles, pain, and hope to conquer fear.
+> A Prophet stood alone with sight so clear,  
+> Of things to come, a premonition dear.  
+> With visions bold, he spoke of what was near,  
+> Of troubles, pain, and hope to conquer fear.  
+
+Long-form content nostr client. Pre-alpha.
 
 ## Development
 
