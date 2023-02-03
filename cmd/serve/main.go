@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"os"
@@ -32,11 +33,27 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
-	// dashboard
+	// middleware to check if user is authenticated (ie. has npub cookie set)
+	r.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			cookie, err := r.Cookie("npub")
+			ctx := context.WithValue(r.Context(), internal.KeySessionNpub, nil)
+			if err == nil {
+				ctx = context.WithValue(ctx, internal.KeySessionNpub, cookie.Value)
+			}
+			next.ServeHTTP(w, r.WithContext(ctx))
+		})
+	})
+
+	// account
 	r.Get("/dashboard", handlers.RenderDashboard)
+	r.Post("/login", handlers.Login)
+	r.Get("/logout", handlers.Logout)
+	r.Get("/about", handlers.RenderAbout)
 
 	// resource posts
-	r.Get("/", handlers.RenderAllPost)
+	r.Get("/", handlers.RenderIndex)
+	r.Get("/posts", handlers.RenderAllPost)
 	r.Get("/new/post", handlers.RenderNewPost)
 	r.Post("/new/post", handlers.SaveNewPost)
 	r.Get("/posts/{id}", handlers.RenderOnePost)
