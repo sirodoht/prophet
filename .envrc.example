@@ -1,0 +1,2 @@
+export DATABASE_URL=postgres://prophet:@localhost:5432/prophet?sslmode=disable
+export DEBUG=1
