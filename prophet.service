@@ -1,0 +1,21 @@
+[Unit]
+Description=prophet
+After=network.target
+
+[Service]
+Type=simple
+
+WorkingDirectory=/var/www/prophet
+ExecStart=/bin/bash -lc 'exec /var/www/prophet/prophet'
+
+User=deploy
+Group=deploy
+
+Environment="DEBUG=1"
+Environment="DATABASE_URL=postgres://prophet:xxx@localhost:5432/prophet?sslmode=disable"
+
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
