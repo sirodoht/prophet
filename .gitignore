@@ -1,0 +1,8 @@
+# env
+.envrc
+
+# build
+/prophet
+
+# database
+/postgresql/postgres-data/
