@@ -2,7 +2,6 @@ package internal
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -26,13 +25,11 @@ func (s *SQLStore) InsertPost(
 		INSERT INTO posts (
 			title,
 			body,
-			created_at,
-			updated_at
+			created_at
 		) VALUES (
 			:title,
 			:body,
-			:created_at,
-			:updated_at
+			:created_at
 		) RETURNING id`, d)
 	if err != nil {
 		return 0, err
@@ -44,30 +41,6 @@ func (s *SQLStore) InsertPost(
 		}
 	}
 	return id, nil
-}
-
-func (s *SQLStore) UpdatePost(
-	ctx context.Context,
-	id int64,
-	field string,
-	value string,
-) error {
-	sql := fmt.Sprintf(`
-		UPDATE posts
-		SET
-			%s=:value,
-			updated_at=now()
-		WHERE id=:id
-	`, field)
-	_, err := s.db.NamedExec(sql, map[string]interface{}{
-		"field": field,
-		"value": value,
-		"id":    id,
-	})
-	if err != nil {
-		return err
-	}
-	return nil
 }
 
 func (s *SQLStore) GetAllPost(ctx context.Context) ([]*Post, error) {

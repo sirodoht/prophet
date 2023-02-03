@@ -40,8 +40,6 @@ func main() {
 	r.Get("/new/post", handlers.RenderNewPost)
 	r.Post("/new/post", handlers.SaveNewPost)
 	r.Get("/posts/{id}", handlers.RenderOnePost)
-	r.Get("/posts/{id}/edit", handlers.RenderEditPost)
-	r.Post("/posts/{id}/edit", handlers.SaveEditPost)
 
 	// static files
 	if debugMode == "1" {
