@@ -73,10 +73,23 @@ func (page *Page) RenderIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func (page *Page) Login(w http.ResponseWriter, r *http.Request) {
+	var npub string
+	var err error
+	npubOrHex := r.FormValue("npub")
+	if npubOrHex[:4] != "npub" {
+		npub, err = nip19.EncodePublicKey(npubOrHex)
+		if err != nil {
+			http.Error(w, "cannot decode hex key", 400)
+			return
+		}
+	} else {
+		npub = npubOrHex
+	}
+
 	// set npub cookie, serving the role of a session token
 	cookie := http.Cookie{
 		Name:     "npub",
-		Value:    r.FormValue("npub"),
+		Value:    npub,
 		Path:     "/",
 		HttpOnly: false,
 	}

@@ -27,10 +27,11 @@ make serve
 
 ## Tools
 
-There is key encoding tool in the codebase:
+There is key encoding tool (hex -> nsec/npub) in the codebase:
 
 ```sh
-go run cmd/encodekey/main.go put-hex-secret-key-here
+go run cmd/encodesecretkey/main.go put-hex-secret-key-here
+go run cmd/encodepublickey/main.go put-hex-public-key-here
 ```
 
 ## License
