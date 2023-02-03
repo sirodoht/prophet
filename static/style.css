@@ -150,12 +150,12 @@ summary {
 :root {
     --link-color: #1175e2;
     --ascent-color: #006cdf;
-    --dark-grey-color: #757575;
-    --light-grey-color: #eff1f5;
-    --airy-grey-color: #fafafa;
+    --gray-500-color: #757575;
+    --gray-200-color: #eff1f5;
+    --gray-100-color: #fafafa;
     --green-color: #26bd60;
     --red-color: #ff0000;
-    --purple-color: #cd1ecd;
+    --purple-color: #862bc5;
 }
 
 /* dark mode
@@ -166,9 +166,9 @@ summary {
         --dark-mode-color: #212529;
 
         --link-color: #3395ff;
-        --dark-grey-color: #78828a;
-        --light-grey-color: #353535;
-        --airy-grey-color: #2b2b2b;
+        --gray-500-color: #78828a;
+        --gray-200-color: #353535;
+        --gray-100-color: #2b2b2b;
         --purple-color: #dd47ec;
     }
 }
@@ -226,7 +226,7 @@ h1 {
     font-size: 1.8rem;
     font-weight: 500;
     padding-bottom: 4px;
-    border-bottom: 2px solid var(--light-grey-color);
+    border-bottom: 2px solid var(--gray-200-color);
     margin: 16px 0;
 }
 
@@ -286,6 +286,7 @@ section {
 }
 
 nav {
+    display: flex;
     max-width: 34rem;
     margin-top: 16px;
     margin-left: auto;
@@ -299,22 +300,44 @@ nav {
     }
 }
 
+nav a {
+    display: inline-block;
+    border: 1px dotted var(--gray-500-color);
+    padding: 0 8px;
+    white-space: nowrap;
+    margin-right: 8px;
+    margin-bottom: 4px;
+}
+
+nav a:hover {
+    text-decoration: none;
+    background: var(--gray-100-color);
+}
+
+.nav-npub {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--purple-color);
+    line-height: 1.6;
+}
+
 ol,
 ul {
     padding-left: 24px;
 }
 
 blockquote {
-    border-left: 4px solid var(--light-grey-color);
+    border-left: 4px solid var(--gray-200-color);
     padding-left: 16px;
     margin-left: 0;
-    color: var(--dark-grey-color);
+    color: var(--gray-500-color);
 }
 
 figure {
-    border: 1px var(--light-grey-color) solid;
+    border: 1px var(--gray-200-color) solid;
     margin: auto;
-    color: var(--dark-grey-color);
+    color: var(--gray-500-color);
 }
 
 figcaption {
@@ -332,14 +355,14 @@ dd {
 
 table {
     border-collapse: collapse;
-    border: 1px solid var(--light-grey-color);
+    border: 1px solid var(--gray-200-color);
     width: 100%;
     box-sizing: border-box;
 }
 
 thead:nth-child(odd),
 tr:nth-child(even) {
-    background: var(--light-grey-color);
+    background: var(--gray-200-color);
 }
 
 th,
@@ -349,17 +372,17 @@ td {
 }
 
 pre {
-    background: var(--airy-grey-color);
+    background: var(--gray-100-color);
     overflow-x: scroll;
 }
 
 code {
-    background: var(--airy-grey-color);
+    background: var(--gray-100-color);
     padding: 2px;
 }
 
 hr {
-    border-top: 1px solid var(--light-grey-color);
+    border-top: 1px solid var(--gray-200-color);
     border-bottom: none;
     border-left: none;
     border-right: none;
@@ -373,7 +396,7 @@ footer {
     margin-bottom: 16px;
     padding-left: 8px;
     padding-right: 8px;
-    color: var(--dark-grey-color);
+    color: var(--gray-500-color);
 }
 
 .footer-comment {
@@ -412,7 +435,7 @@ input[type="email"],
 input[type="password"],
 textarea {
     display: block;
-    border: 2px solid var(--light-grey-color);
+    border: 2px solid var(--gray-200-color);
     box-sizing: border-box;
     width: 34rem;
 }
@@ -432,20 +455,20 @@ textarea {
     input[type="password"],
     textarea {
         color: #fff;
-        background: var(--light-grey-color);
+        background: var(--gray-200-color);
     }
 }
 
 input[type="submit"] {
     cursor: pointer;
-    background: var(--link-color);
-    color: #fff;
-    border: 1px solid var(--ascent-color);
-    padding: 8px 24px;
+    background: #fff;
+    border: 2px solid var(--link-color);
+    padding: 4px 24px;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:active {
+    color: #fff;
     background: var(--ascent-color);
 }
 
@@ -455,7 +478,7 @@ input[type="submit"]:disabled {
 }
 
 form .helptext {
-    color: var(--dark-grey-color);
+    color: var(--gray-500-color);
 }
 
 .form-error {
@@ -475,4 +498,39 @@ form .helptext {
 
 .form-inline input[type="submit"]:hover {
     text-decoration: underline;
+}
+
+/* index */
+.subtitle {
+    color: var(--gray-500-color);
+    font-size: 1.3rem;
+}
+
+.index-post {
+    border: 2px solid var(--gray-200-color);
+    padding: 8px 16px;
+    margin-bottom: 16px;
+}
+
+.index-post-date {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.index-post-body {
+    display: block;
+    color: var(--gray-500-color);
+    margin-bottom: 8px;
+    height: 120px;
+    overflow: hidden;
+}
+
+/* dashboard */
+.dashboard-npub {
+    display: inline-block;
+    background: var(--purple-color);
+    color: #fff;
+    font-family: monospace;
+    font-size: 15px;
+    padding: 4px 8px;
 }
